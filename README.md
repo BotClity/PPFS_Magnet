@@ -1,8 +1,8 @@
 # PPFS_Magnet
 ## Плагин, который добавляет магниты
-![Магнит_левый](https://images.minecraft-heads.com/render3d/head/bf/bfe784be93c59798466740eda191f7b5.webp)
-![Магнит](https://images.minecraft-heads.com/render2d/head/36/3633332f30a362e864de77160d4f37fb.webp)
-![Магнит_правый](https://images.minecraft-heads.com/render3d/head-back/41/410fa049a2bae4a7122831e0bec124e7.webp)
+![Магнит_левый](images/bfe784be93c59798466740eda191f7b5.webp)
+![Магнит](images/3633332f30a362e864de77160d4f37fb.webp)
+![Магнит_правый](images/410fa049a2bae4a7122831e0bec124e7.webp)
 
 ## Содержание
 ### 1. [Команды плагина](#Команды)
