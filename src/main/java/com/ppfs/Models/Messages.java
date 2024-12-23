@@ -18,16 +18,16 @@ public class Messages extends ConfigJSON {
     }
 
 
-    Message no_permission = new Message("<red>У Вас недостаточно прав!");
-    Message magnet_give_successfully = new Message("<green>Магнит успешно выдан.</green>(Радиус работы: <radius>)");
-    Message no_item_in_right_hand = new Message("<red>У Вас нету предмета в правой руке.");
-    Message already_magnet = new Message("<red>Предмет уже обладает свойствами магнита.");
-    Message magnet_cast_successfully = new Message("<green>Предмет успешно приобрел свойства магнита");
-    Message item_not_magnet = new Message("<red>Ваш предмет не является магнитом!");
-    Message magnet_uncast_successfully = new Message("<green>Предмет больше не магнит");
-    Message not_number = new Message("<red>Вы ввели не число");
-    Message no_args = new Message("<red>недостаточно аргументов");
-    Message radius_updated = new Message("<green>Радиус обновлен.");
-    Message magnet_activated = new Message("<green>Магнит активирован.");
-    Message magnet_deactivated = new Message("<red>Магнит отключён.");
+    Message no_permission = new Message("<dark_green>[PPFS_Magnet]<red>У Вас недостаточно прав!");
+    Message magnet_give_successfully = new Message("<dark_green>[PPFS_Magnet]<green>Магнит успешно выдан.</green>(Радиус работы: <radius>)");
+    Message no_item_in_right_hand = new Message("<dark_green>[PPFS_Magnet]<red>У Вас нету предмета в правой руке.");
+    Message already_magnet = new Message("<dark_green>[PPFS_Magnet]<red>Предмет уже обладает свойствами магнита.");
+    Message magnet_cast_successfully = new Message("<dark_green>[PPFS_Magnet]<green>Предмет успешно приобрел свойства магнита");
+    Message item_not_magnet = new Message("<dark_green>[PPFS_Magnet]<red>Ваш предмет не является магнитом!");
+    Message magnet_uncast_successfully = new Message("<dark_green>[PPFS_Magnet]<green>Предмет больше не магнит");
+    Message not_number = new Message("<<dark_green>[PPFS_Magnet]red>Вы ввели не число");
+    Message no_args = new Message("<dark_green>[PPFS_Magnet]<red>недостаточно аргументов");
+    Message radius_updated = new Message("<dark_green>[PPFS_Magnet]<green>Радиус обновлен.");
+    Message magnet_activated = new Message("<dark_green>[PPFS_Magnet]<green>Магнит активирован.");
+    Message magnet_deactivated = new Message("<dark_green>[PPFS_Magnet]<red>Магнит отключён.");
 }
