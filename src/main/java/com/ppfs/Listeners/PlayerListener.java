@@ -4,6 +4,7 @@
 package com.ppfs.Listeners;
 
 import com.ppfs.Models.Magnet;
+import com.ppfs.Models.Messages;
 import com.ppfs.PPFS_Magnet;
 import com.ppfs.Services.MagnetService;
 import org.bukkit.entity.Player;
@@ -33,12 +34,14 @@ public class PlayerListener implements Listener {
 
         if (magnetService.hasPlayer(player.getUniqueId())){
             if (!Magnet.isMagnet(next))magnetService.removePlayer(player.getUniqueId());
+            Messages.getInstance().getMagnet_deactivated().send(player);
             return;
         }
 
         if (Magnet.isMagnet(next)){
             Magnet magnet = new Magnet(next);
             magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
+            Messages.getInstance().getMagnet_activated().send(player);
             PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
             return;
         }
@@ -55,6 +58,7 @@ public class PlayerListener implements Listener {
 
         if (!Magnet.isMagnet(item))return;
         magnetService.removePlayer(player.getUniqueId());
+        Messages.getInstance().getMagnet_deactivated().send(player);
         PPFS_Magnet.getPaperLogger().debug(player.getName()+" removed");
 
     }
@@ -63,12 +67,17 @@ public class PlayerListener implements Listener {
     private void onSwapHand(PlayerSwapHandItemsEvent event){
         Player player = event.getPlayer();
 
-        ItemStack offHandItem = player.getInventory().getItemInOffHand();
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if (item.getType().isAir())return;
+        item = player.getInventory().getItemInOffHand();
+        if (item.getType().isAir())return;
 
-        if (!Magnet.isMagnet(offHandItem) || magnetService.hasPlayer(player.getUniqueId()))return;
 
-        Magnet magnet = new Magnet(offHandItem);
+        if (!Magnet.isMagnet(item) || magnetService.hasPlayer(player.getUniqueId()))return;
+
+        Magnet magnet = new Magnet(item);
         magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
+        Messages.getInstance().getMagnet_activated().send(player);
         PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
     }
 }

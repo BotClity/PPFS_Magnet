@@ -3,17 +3,19 @@
 // Лицензия: MIT
 package com.ppfs.Models;
 
+import com.ppfs.PPFS_Magnet;
+import com.ppfs.ppfs_libs.models.configs.ConfigJSON;
 import com.ppfs.ppfs_libs.models.message.Message;
 import lombok.Getter;
 
 @Getter
-public class Messages {
+public class Messages extends ConfigJSON {
     private static Messages instance;
 
     private Messages(){}
 
     public static Messages getInstance(){
-        if (instance == null)instance = new Messages();
+        if (instance == null)instance = load(PPFS_Magnet.getInstance(), "messages", Messages.class);
         return instance;
     }
 
@@ -28,4 +30,6 @@ public class Messages {
     Message not_number = new Message("<red>Вы ввели не число");
     Message no_args = new Message("<red>недостаточно аргументов");
     Message radius_updated = new Message("<green>Радиус обновлен.");
+    Message magnet_activated = new Message("<green>Магнит активирован.");
+    Message magnet_deactivated = new Message("<red>Магнит отключён.");
 }
