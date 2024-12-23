@@ -14,6 +14,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -162,6 +163,15 @@ public class MagnetService {
             Player owner = Bukkit.getPlayer(data.getOwner());
             if (owner == null || !owner.isOnline() || !item.isValid()) {
                 logger.debug("Удаляем из map, т.к. owner = null/оффлайн/предмет невалиден");
+                it.remove();
+                continue;
+            }
+
+            ItemStack mainHand = owner.getInventory().getItemInMainHand();
+            ItemStack offHand = owner.getInventory().getItemInOffHand();
+
+            if (!Magnet.isMagnet(mainHand) && !Magnet.isMagnet(offHand)) {
+                logger.debug("У игрока не найден магнит в руке");
                 it.remove();
                 continue;
             }

@@ -12,8 +12,6 @@ import lombok.Getter;
 public class Messages extends ConfigJSON {
     private static Messages instance;
 
-    private Messages(){}
-
     public static Messages getInstance(){
         if (instance == null)instance = load(PPFS_Magnet.getInstance(), "messages", Messages.class);
         return instance;

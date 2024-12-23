@@ -34,14 +34,14 @@ public class PlayerListener implements Listener {
 
         if (magnetService.hasPlayer(player.getUniqueId())){
             if (!Magnet.isMagnet(next))magnetService.removePlayer(player.getUniqueId());
-            Messages.getInstance().getMagnet_deactivated().send(player);
+            Messages.getInstance().getMagnet_deactivated().sendActionBar(player);
             return;
         }
 
         if (Magnet.isMagnet(next)){
             Magnet magnet = new Magnet(next);
             magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
-            Messages.getInstance().getMagnet_activated().send(player);
+            Messages.getInstance().getMagnet_activated().sendActionBar(player);
             PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
             return;
         }
@@ -58,7 +58,7 @@ public class PlayerListener implements Listener {
 
         if (!Magnet.isMagnet(item))return;
         magnetService.removePlayer(player.getUniqueId());
-        Messages.getInstance().getMagnet_deactivated().send(player);
+        Messages.getInstance().getMagnet_deactivated().sendActionBar(player);
         PPFS_Magnet.getPaperLogger().debug(player.getName()+" removed");
 
     }
@@ -77,7 +77,7 @@ public class PlayerListener implements Listener {
 
         Magnet magnet = new Magnet(item);
         magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
-        Messages.getInstance().getMagnet_activated().send(player);
+        Messages.getInstance().getMagnet_activated().sendActionBar(player);
         PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
     }
 }
