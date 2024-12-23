@@ -1,0 +1,9 @@
+name: PPFS_Magnet
+version: '0.0.1'
+main: com.ppfs.PPFS_Magnet
+api-version: '1.16'
+load: POSTWORLD
+depend:
+  - PPFS_Libs
+commands:
+  magnet:
