@@ -5,7 +5,6 @@ import com.ppfs.PPFS_Magnet;
 import com.ppfs.ppfs_libs.models.menu.slots.HeadSlot;
 import com.ppfs.ppfs_libs.models.message.Message;
 import com.ppfs.ppfs_libs.models.message.Placeholders;
-import com.ppfs.ppfs_libs.service.logger.PaperLogger;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -25,7 +24,6 @@ public class MagnetService {
     private static MagnetService instance;
     private final PPFS_Magnet plugin;
     private final double speed;
-    private PaperLogger logger;
     private final Map<Item, MagnetData> magnetItems = new ConcurrentHashMap<>();
 
     @Getter
@@ -54,7 +52,6 @@ public class MagnetService {
 
     private MagnetService() {
         plugin = PPFS_Magnet.getInstance();
-        logger = PPFS_Magnet.getPaperLogger();
         speed = plugin.getConfig().getDouble("speed");
 
         loadDefaultItem();
@@ -162,7 +159,6 @@ public class MagnetService {
 
             Player owner = Bukkit.getPlayer(data.getOwner());
             if (owner == null || !owner.isOnline() || !item.isValid()) {
-                logger.debug("Удаляем из map, т.к. owner = null/оффлайн/предмет невалиден");
                 it.remove();
                 continue;
             }
@@ -171,7 +167,6 @@ public class MagnetService {
             ItemStack offHand = owner.getInventory().getItemInOffHand();
 
             if (!Magnet.isMagnet(mainHand) && !Magnet.isMagnet(offHand)) {
-                logger.debug("У игрока не найден магнит в руке");
                 it.remove();
                 continue;
             }
@@ -181,26 +176,21 @@ public class MagnetService {
             double distance = itemLoc.distance(playerLoc);
 
             if (distance > data.getRadius()) {
-                logger.debug("Удаляем из map, т.к. distance(%s) > radius(%s)", distance, data.getRadius());
                 it.remove();
                 continue;
             }
 
             if (distance < 0.6) {
-                logger.debug("Удаляем из map, т.к. distance(%s) < 0.6", distance);
                 it.remove();
                 continue;
             }
 
             if (speed <= 0) {
-                logger.debug("speed = %s — предмет не двигаем!", speed);
                 continue;
             }
 
             Vector direction = playerLoc.toVector().subtract(itemLoc.toVector()).normalize();
             item.setVelocity(direction.multiply(speed));
-
-            logger.debug("item %s движется к %s со скоростью speed=%s", item.getItemStack().getType(), owner.getName(), speed);
         }
     }
 }

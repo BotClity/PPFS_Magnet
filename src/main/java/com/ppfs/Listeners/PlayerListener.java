@@ -14,8 +14,11 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PlayerListener implements Listener {
+    private static final Logger log = LoggerFactory.getLogger(PlayerListener.class);
     private final MagnetService magnetService;
 
     public PlayerListener() {
@@ -42,7 +45,6 @@ public class PlayerListener implements Listener {
             Magnet magnet = new Magnet(next);
             magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
             Messages.getInstance().getMagnet_activated().sendActionBar(player);
-            PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
             return;
         }
 
@@ -59,8 +61,6 @@ public class PlayerListener implements Listener {
         if (!Magnet.isMagnet(item))return;
         magnetService.removePlayer(player.getUniqueId());
         Messages.getInstance().getMagnet_deactivated().sendActionBar(player);
-        PPFS_Magnet.getPaperLogger().debug(player.getName()+" removed");
-
     }
 
     @EventHandler
@@ -78,6 +78,5 @@ public class PlayerListener implements Listener {
         Magnet magnet = new Magnet(item);
         magnetService.addPlayer(player.getUniqueId(), magnet.getRadius());
         Messages.getInstance().getMagnet_activated().sendActionBar(player);
-        PPFS_Magnet.getPaperLogger().debug(player.getName()+" added");
     }
 }

@@ -71,4 +71,9 @@ public class SubCommandGive extends SubCommand {
         }
         return Collections.emptyList();
     }
+
+    @Override
+    public String getPermission(CommandSender sender, String... args) {
+        return "magnet.give";
+    }
 }

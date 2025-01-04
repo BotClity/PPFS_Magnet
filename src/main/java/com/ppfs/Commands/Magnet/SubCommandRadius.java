@@ -7,7 +7,6 @@ package com.ppfs.Commands.Magnet;
 import com.ppfs.Models.Magnet;
 import com.ppfs.Models.Messages;
 import com.ppfs.ppfs_libs.commands.SubCommand;
-import com.ppfs.ppfs_libs.models.message.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -69,5 +68,10 @@ public class SubCommandRadius extends SubCommand {
             return Collections.singletonList("Радиус");
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public String getPermission(CommandSender sender, String... args) {
+        return "magnet.radius";
     }
 }

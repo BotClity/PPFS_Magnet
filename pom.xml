@@ -6,7 +6,7 @@
 
     <groupId>com.ppfs</groupId>
     <artifactId>ppfs_magnet</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>ppfs_magnet</name>
@@ -82,11 +82,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
@@ -94,7 +89,7 @@
         <dependency>
             <groupId>io.github.botclity</groupId>
             <artifactId>PPFS_Libs</artifactId>
-            <version>0.0.8</version>
+            <version>0.1.0</version>
             <scope>provided</scope>
         </dependency>
 

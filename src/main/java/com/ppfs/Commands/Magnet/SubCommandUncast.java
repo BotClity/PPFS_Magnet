@@ -51,4 +51,9 @@ public class SubCommandUncast extends SubCommand {
     public List<String> complete(CommandSender sender, String... args) {
         return Collections.emptyList();
     }
+
+    @Override
+    public String getPermission(CommandSender sender, String... args) {
+        return "magnet.uncast";
+    }
 }

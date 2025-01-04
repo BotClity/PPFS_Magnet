@@ -6,10 +6,8 @@ package com.ppfs.Commands.Magnet;
 import com.ppfs.Models.Magnet;
 import com.ppfs.Models.Messages;
 import com.ppfs.ppfs_libs.commands.SubCommand;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -52,5 +50,10 @@ public class SubCommandCast extends SubCommand {
     @Override
     public List<String> complete(CommandSender sender, String... args) {
         return Collections.emptyList();
+    }
+
+    @Override
+    public String getPermission(CommandSender sender, String... args) {
+        return "magnet.cast";
     }
 }
